@@ -52,6 +52,28 @@ const Hero = () => {
                 </div>
                 {/* Image hero */}
                 <div className="hidden xl:flex relative">
+                    {/* badge 1 */}
+                    <Badge 
+                        containerStyles="absolute top-[24%] -left-[5rem]"
+                        icon={<RiBriefcase4Fill/>}
+                        endCountNum={10}
+                        badgeText='years of experience'
+                    />
+                    {/* badge 2 */}
+                    <Badge 
+                        containerStyles="absolute top-[80%] -left-[1rem]"
+                        icon={<RiTodoFill/>}
+                        endCountNum={2}
+                        endCountText='k'
+                        badgeText='Completed projects'
+                    />
+                    {/* badge 3 */}
+                    <Badge 
+                        containerStyles="absolute top-[55%] -right-8"
+                        icon={<RiTeamFill/>}
+                        endCountNum={127}
+                        badgeText='Clients satisfied'
+                    />
                     {/* background images @tailwind.config.js */}
                     <div className="bg-hero_shape2_light dark:bg-hero_shape2_dark w-[500px] h-[500px] bg-no-repeat absolute -top-1 -right-2"></div>
                     <DevImg 
