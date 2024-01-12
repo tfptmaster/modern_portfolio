@@ -72,14 +72,14 @@ const qualificationData = [
         title: "education",
         data: [
             {
-                School: "ENI",
-                Qualification: "Certification PHP",
-                Years: "2023"
+                school: "ENI",
+                qualification: "Certification PHP",
+                years: "2023"
             },
             {
-                School: "Ecole O'Clock",
-                Qualification: "Bac+2",
-                Years: "2022 - 2023"
+                school: "Ecole O'Clock",
+                qualification: "Bac+2",
+                years: "2022 - 2023"
             },
             
         ]
@@ -88,14 +88,14 @@ const qualificationData = [
         title: "experience",
         data: [
             {
-                Company: "Brasserie du web",
-                Qualification: "Développeur fullstack",
-                Years: "2023"
+                company: "Brasserie du web",
+                role: "Développeur fullstack",
+                years: "2023"
             },
             {
-                School: "Ecole O'Clock",
-                Qualification: "Lead dev front",
-                Years: "2022 - 2023"
+                company: "Ecole O'Clock",
+                role: "Développeur frontend",
+                years: "2022 - 2023"
             },
             
         ]
@@ -158,10 +158,63 @@ const About = () => {
                             {/* Onglet qualifications */}
                             <TabsContent value='qualifications'>
                                 <div>
-                                    <h3>My journey</h3>
-                                    <div>
-                                        <div>Experience</div>
-                                        <div>Education</div>
+                                    <h3 className="h3 mb-8 text-center xl:text-left">My journey</h3>
+                                    {/* Expérience et formation */}
+                                    <div className="grid md:grid-cols-2 gap-y-8">
+                                        {/* expérience */}
+                                        <div className="flex flex-col gap-y-6">
+                                            <div className="flex gap-x-4 items-center text-[22px] text-primary">
+                                                <Briefcase />
+                                                <h4 className="capitalize font-medium">
+                                                    {getData(qualificationData, 'experience').title}
+                                                </h4>
+                                            </div>
+                                            {/* Liste avec expérience */}
+                                            <div className="flex flex-col gap-y-8">
+                                                {getData(qualificationData, 'experience').data.map((item, index) => {
+                                                    const {company, role, years} = item;
+                                                    return (
+                                                        <div className="flex gap-x-8 group" key={index}>
+                                                            <div className="h-[84px] w-[1px] bg-border relative ml-2">
+                                                                <div className="w-[11px] h-[11px] rounded-full bg-primary relative -left-[5px] group-hover:translate-y-[84px] transition-all duration-500"></div>
+                                                            </div>
+                                                            <div>
+                                                                <div className="font-semibold text-xl leading-none mb-2">{company}</div>
+                                                                <div className="text-lg leading-none text-muted-foreground mb-4">{role}</div>
+                                                                <div className="text-base font-medium">{years}</div>
+                                                            </div>
+                                                        </div>
+                                                    )
+                                                })}
+                                            </div>
+                                        </div>
+                                        {/* formation */}
+                                        <div className="flex flex-col gap-y-6">
+                                            <div className="flex gap-x-4 items-center text-[22px] text-primary">
+                                                <GraduationCap size={28}/>
+                                                <h4 className="capitalize font-medium">
+                                                    {getData(qualificationData, 'education').title}
+                                                </h4>
+                                            </div>
+                                            {/* Liste des formations */}
+                                            <div className="flex flex-col gap-y-8">
+                                                {getData(qualificationData, 'education').data.map((item, index) => {
+                                                    const {school, qualification, years} = item;
+                                                    return (
+                                                        <div className="flex gap-x-8 group" key={index}>
+                                                            <div className="h-[84px] w-[1px] bg-border relative ml-2">
+                                                                <div className="w-[11px] h-[11px] rounded-full bg-primary relative -left-[5px] group-hover:translate-y-[84px] transition-all duration-500"></div>
+                                                            </div>
+                                                            <div>
+                                                                <div className="font-semibold text-xl leading-none mb-2">{school}</div>
+                                                                <div className="text-lg leading-none text-muted-foreground mb-4">{qualification}</div>
+                                                                <div className="text-base font-medium">{years}</div>
+                                                            </div>
+                                                        </div>
+                                                    )
+                                                })}
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </TabsContent>
